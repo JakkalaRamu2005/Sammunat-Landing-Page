@@ -1,0 +1,59 @@
+:root {
+    /* Brand Colors */
+    --primary-color: #0062ff;
+    /* More vibrant tech blue */
+    --secondary-color: #00d2ff;
+    /* Cyan gradient accent */
+    --accent-color: #28a745;
+    --dark-bg: #0a1929;
+    /* Deep sleek dark blue/black */
+    --light-bg: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --white: #ffffff;
+
+    /* Spacing */
+    --container-padding: 24px;
+    --section-spacing: 100px;
+
+    /* UI Effects */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --premium-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--light-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Ant Design Override Helpers */
+.ant-btn-primary {
+    background: var(--primary-color) !important;
+    box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39) !important;
+}
+
+.ant-btn-primary:hover {
+    background: #0056e0 !important;
+    transform: translateY(-1px);
+}

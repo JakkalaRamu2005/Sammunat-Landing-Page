@@ -1,0 +1,19 @@
+{
+  "name": "sammunat-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/cssinjs": "^2.0.1",
+    "@ant-design/icons": "^6.1.0",
+    "antd": "^5.29.2",
+    "next": "14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
