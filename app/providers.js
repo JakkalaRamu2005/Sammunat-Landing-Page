@@ -8,10 +8,12 @@ export function Providers({ children }) {
         <ConfigProvider
             theme={{
                 token: {
-                    colorPrimary: '#007BFF',
-                    colorSuccess: '#28A745',
+                    colorPrimary: '#0062ff',
+                    colorSuccess: '#28a745',
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 },
+                // Reduce CSS-in-JS overhead
+                hashed: false,
             }}
         >
             {children}

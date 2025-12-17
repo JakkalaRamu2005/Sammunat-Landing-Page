@@ -1,12 +1,9 @@
 :root {
     /* Brand Colors */
     --primary-color: #0062ff;
-    /* More vibrant tech blue */
     --secondary-color: #00d2ff;
-    /* Cyan gradient accent */
     --accent-color: #28a745;
     --dark-bg: #0a1929;
-    /* Deep sleek dark blue/black */
     --light-bg: #f8fafc;
     --text-primary: #1e293b;
     --text-secondary: #64748b;
@@ -37,9 +34,12 @@ html {
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: var(--light-bg);
     color: var(--text-primary);
     line-height: 1.6;
+    /* Prevent layout shifts */
+    overflow-x: hidden;
 }
 
 a {
@@ -47,13 +47,36 @@ a {
     text-decoration: none;
 }
 
+/* Reduce layout shift */
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Ant Design Override Helpers */
 .ant-btn-primary {
     background: var(--primary-color) !important;
-    box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39) !important;
 }
 
 .ant-btn-primary:hover {
     background: #0056e0 !important;
-    transform: translateY(-1px);
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Performance: Use containment for isolated components */
+.section-wrapper {
+    contain: layout style;
 }

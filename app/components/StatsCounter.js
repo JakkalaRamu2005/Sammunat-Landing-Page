@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Row, Col, Typography, Card } from 'antd';
-
-const { Title, Text } = Typography;
+import { Row, Col } from 'antd';
 
 const statsData = [
     { label: 'Interns Mentored', value: 50, suffix: '+' },
@@ -11,49 +9,12 @@ const statsData = [
     { label: 'Employment Rate', value: 95, suffix: '%' },
 ];
 
-const Counter = ({ end, duration = 2000, suffix }) => {
-    const [count, setCount] = useState(0);
-    const countRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (countRef.current) {
-            observer.observe(countRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        if (!isVisible) return;
-
-        let startTime = null;
-        const animate = (currentTime) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-
-            setCount(Math.floor(progress * end));
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            }
-        };
-
-        requestAnimationFrame(animate);
-    }, [isVisible, end, duration]);
+// Simplified counter without heavy animations
+const Counter = ({ end, suffix }) => {
+    const [count, setCount] = useState(end); // Start at final value for performance
 
     return (
-        <div ref={countRef}>
+        <div>
             {count}{suffix}
         </div>
     );

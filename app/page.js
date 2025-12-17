@@ -1,15 +1,24 @@
 'use client';
 
-import React from 'react';
-import { Button, Layout, Space, Divider } from 'antd';
+import React, { lazy, Suspense } from 'react';
+import { Button, Layout, Space, Divider, Spin } from 'antd';
 import { LinkedinOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
-import Features from './components/Features';
-import CTASection from './components/CTASection';
-import Testimonials from './components/Testimonials';
-import StatsCounter from './components/StatsCounter';
-import ProjectGallery from './components/ProjectGallery';
+
+// Lazy load heavy components
+const Features = lazy(() => import('./components/Features'));
+const CTASection = lazy(() => import('./components/CTASection'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const StatsCounter = lazy(() => import('./components/StatsCounter'));
+const ProjectGallery = lazy(() => import('./components/ProjectGallery'));
 
 const { Content } = Layout;
+
+// Loading fallback component
+const LoadingFallback = () => (
+    <div style={{ textAlign: 'center', padding: '60px 20px' }}>
+        <Spin size="large" />
+    </div>
+);
 
 export default function Home() {
     return (
@@ -26,7 +35,7 @@ export default function Home() {
             </nav>
 
             <Content>
-                {/* Hero Section */}
+                {/* Hero Section - Critical, not lazy loaded */}
                 <section className="hero-section">
                     <div className="section-wrapper">
                         <h1 className="hero-title">
@@ -47,10 +56,12 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* Stats Counter Section (New) */}
-                <StatsCounter />
+                {/* Lazy loaded sections */}
+                <Suspense fallback={<LoadingFallback />}>
+                    <StatsCounter />
+                </Suspense>
 
-                {/* About Section */}
+                {/* About Section - Critical content, not lazy */}
                 <section id="about" className="about-section">
                     <div className="section-wrapper">
                         <div className="section-header">
@@ -63,17 +74,21 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* Features Section - Interactive */}
-                <Features />
+                <Suspense fallback={<LoadingFallback />}>
+                    <Features />
+                </Suspense>
 
-                {/* Project Gallery (New) */}
-                <ProjectGallery />
+                <Suspense fallback={<LoadingFallback />}>
+                    <ProjectGallery />
+                </Suspense>
 
-                {/* Testimonials (New) */}
-                <Testimonials />
+                <Suspense fallback={<LoadingFallback />}>
+                    <Testimonials />
+                </Suspense>
 
-                {/* CTA Section - Interactive Modal */}
-                <CTASection />
+                <Suspense fallback={<LoadingFallback />}>
+                    <CTASection />
+                </Suspense>
             </Content>
 
             <footer className="footer-section">

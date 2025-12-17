@@ -18,7 +18,7 @@
     justify-content: space-between;
     padding: 0 40px;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
 }
 
 /* Mobile Nav: Hide secondary links on small screens */
@@ -55,29 +55,9 @@
 .hero-section {
     position: relative;
     padding: 180px 20px 120px;
-    /* Enhanced Gradient */
     background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
     text-align: center;
-    overflow: hidden;
 }
-
-/* Subtle pattern overlay for hero */
-.hero-section::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(#007BFF 1px, transparent 1px),
-        radial-gradient(#007BFF 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
-    opacity: 0.03;
-    pointer-events: none;
-}
-
 
 .hero-title {
     font-size: clamp(40px, 6vw, 64px);
@@ -86,8 +66,6 @@
     letter-spacing: -1.5px;
     margin-bottom: 24px;
     color: var(--text-primary);
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out forwards;
 }
 
 .hero-title span {
@@ -100,13 +78,10 @@
     max-width: 700px;
     margin: 0 auto 40px;
     font-weight: 400;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.2s forwards;
 }
 
 .hero-actions {
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.4s forwards;
+    /* Removed animation for performance */
 }
 
 .hero-btn {
@@ -115,12 +90,12 @@
     font-size: 16px;
     font-weight: 600;
     border-radius: 50px;
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .hero-btn:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.15);
 }
 
 /* --- Stats Section --- */
@@ -183,22 +158,21 @@
     margin: 0 auto;
 }
 
-/* --- Features Section (Interactive Upgrade) --- */
+/* --- Features Section --- */
 .features-section {
     padding: var(--section-spacing) 24px;
     background: #f8fafc;
 }
 
-/* Ant Collapse Overrides */
 .ant-collapse-item {
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .ant-collapse-header {
     align-items: center !important;
 }
 
-/* --- Testimonials Section (New) --- */
+/* --- Testimonials Section --- */
 .testimonials-section {
     padding: var(--section-spacing) 24px;
     background: var(--white);
@@ -209,7 +183,6 @@
     overflow-x: auto;
     gap: 24px;
     padding: 10px 4px 40px;
-    /* Space for shadow */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 }
@@ -229,16 +202,22 @@
     scroll-snap-align: center;
     border: 1px solid #f0f0f0 !important;
     border-radius: 16px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Gallery Section (New) --- */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* --- Gallery Section --- */
 .gallery-section {
     padding: var(--section-spacing) 24px;
     background: #fcfcfc;
@@ -249,35 +228,21 @@
     border-radius: 16px !important;
     background: #fff;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
-    border-color: transparent;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* --- CTA Section (Banner Upgrade) --- */
+/* --- CTA Section --- */
 .cta-section {
     padding: 100px 24px;
     background: linear-gradient(135deg, #0062ff 0%, #0036cc 100%);
     color: var(--white);
     text-align: center;
     position: relative;
-    overflow: hidden;
-}
-
-/* Add shimmer effect to background */
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    animation: shimmer 8s infinite;
 }
 
 .cta-banner {
@@ -337,7 +302,7 @@
 .footer-link {
     color: rgba(255, 255, 255, 0.7);
     font-size: 15px;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -351,29 +316,6 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
-}
-
-/* --- Animations --- */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(50%);
-    }
 }
 
 /* --- Responsive Adjustments --- */
@@ -393,4 +335,161 @@
     .stat-value {
         font-size: 36px;
     }
+}
+
+/* Form Overlay Styles */
+.form-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1001;
+    backdrop-filter: blur(2px);
+}
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    pointer-events: none;
+}
+
+.form-container {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-down {
+    animation: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.form-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px 12px 0 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.application-form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #ff4d4f;
+}
+
+.error-msg {
+    color: #ff4d4f;
+    font-size: 12px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.submit-btn {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.cancel-btn {
+    background: #f5f5f5;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
 }
