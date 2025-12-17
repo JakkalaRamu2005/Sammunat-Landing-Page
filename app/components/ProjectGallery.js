@@ -44,7 +44,7 @@ export default function ProjectGallery() {
                 <Row gutter={[24, 24]}>
                     {projects.map((proj, index) => (
                         <Col key={index} xs={24} sm={12} md={6}>
-                            <Card className="project-card" bordered={false} hoverable>
+                            <Card className="project-card" variant="borderless" hoverable>
                                 <div className="project-icon" style={{ fontSize: '32px', color: '#007BFF', marginBottom: 16 }}>
                                     {proj.icon}
                                 </div>

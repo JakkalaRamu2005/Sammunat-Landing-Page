@@ -36,7 +36,7 @@ export default function Testimonials() {
                 </div>
                 <div className="testimonials-scroll">
                     {testimonials.map((item, index) => (
-                        <Card key={index} className="testimonial-card" bordered={false} hoverable>
+                        <Card key={index} className="testimonial-card" variant="borderless" hoverable>
                             <div className="testimonial-header">
                                 <Avatar size={48} icon={<UserOutlined />} style={{ backgroundColor: '#007BFF' }} />
                                 <div style={{ marginLeft: 16 }}>

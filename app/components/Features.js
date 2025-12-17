@@ -88,7 +88,7 @@ export default function Features() {
                 <Row justify="center">
                     <Col xs={24} lg={20}>
                         <Collapse
-                            bordered={false}
+                            variant="borderless"
                             defaultActiveKey={['1']}
                             expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} style={{ fontSize: '16px', color: isActive ? '#007BFF' : undefined }} />}
                             style={{ background: 'transparent' }}
