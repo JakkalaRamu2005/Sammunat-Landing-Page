@@ -20,7 +20,6 @@ const nextConfig = {
 
     // Performance optimizations
     experimental: {
-        optimizeCss: true,
         optimizePackageImports: ['antd', '@ant-design/icons'],
     },
 

@@ -45,17 +45,9 @@ export default function RootLayout({ children }) {
 
                 {/* Optimized font loading with font-display: swap */}
                 <link
-                    rel="preload"
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-                    as="style"
-                    onLoad="this.onload=null;this.rel='stylesheet'"
+                    rel="stylesheet"
                 />
-                <noscript>
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-                        rel="stylesheet"
-                    />
-                </noscript>
 
                 {/* Favicon and app icons */}
                 <link rel="icon" href="/favicon.ico" sizes="any" />
