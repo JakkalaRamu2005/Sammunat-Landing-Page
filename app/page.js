@@ -1,41 +1,31 @@
 'use client';
 
 import React, { lazy, Suspense } from 'react';
-import { Button, Layout, Space, Divider, Spin } from 'antd';
 import { LinkedinOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
-// Lazy load heavy components
+// Lazy load heavy components with proper chunking
 const Features = lazy(() => import('./components/Features'));
 const CTASection = lazy(() => import('./components/CTASection'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
-const StatsCounter = lazy(() => import('./components/StatsCounter'));
 const ProjectGallery = lazy(() => import('./components/ProjectGallery'));
 
-const { Content } = Layout;
-
-// Loading fallback component
-const LoadingFallback = () => (
-    <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-        <Spin size="large" />
-    </div>
-);
+// Optimized loading component
+const MinimalLoader = () => <div style={{ minHeight: '200px' }} />;
 
 export default function Home() {
     return (
         <div className="main-layout">
-            {/* Navbar - Sticky & Glassmorphism */}
+            {/* Navbar - Pure HTML for critical path */}
             <nav className="navbar">
-                <div className="navbar-brand">
-                    Sammunat
-                </div>
+                <div className="navbar-brand">Sammunat</div>
                 <div className="nav-links">
-                    <Button type="text" href="#about">About</Button>
-                    <Button type="primary" shape="round" href="mailto:internships@sammunat.com">Apply Now</Button>
+                    <a href="#about" className="nav-link-text">About</a>
+                    <a href="mailto:internships@sammunat.com" className="nav-link-btn">Apply Now</a>
                 </div>
             </nav>
 
-            <Content>
-                {/* Hero Section - Critical, not lazy loaded */}
+            <main>
+                {/* Hero Section - Pure HTML, no React components */}
                 <section className="hero-section">
                     <div className="section-wrapper">
                         <h1 className="hero-title">
@@ -45,23 +35,36 @@ export default function Home() {
                         <p className="hero-subtitle">
                             Launch your career in tech with hands-on experience in cutting-edge projects. Mentorship, real impact, and growth await.
                         </p>
-                        <Space size="middle" className="hero-actions">
-                            <Button type="primary" size="large" className="hero-btn" href="mailto:internships@sammunat.com">
+                        <div className="hero-actions">
+                            <a href="mailto:internships@sammunat.com" className="hero-btn hero-btn-primary">
                                 Apply Now
-                            </Button>
-                            <Button size="large" className="hero-btn" href="#features">
+                            </a>
+                            <a href="#features" className="hero-btn hero-btn-secondary">
                                 View Program
-                            </Button>
-                        </Space>
+                            </a>
+                        </div>
                     </div>
                 </section>
 
-                {/* Lazy loaded sections */}
-                <Suspense fallback={<LoadingFallback />}>
-                    <StatsCounter />
-                </Suspense>
+                {/* Stats - Pure HTML */}
+                <section className="stats-section">
+                    <div className="stats-grid">
+                        <div className="stat-item">
+                            <div className="stat-value">50+</div>
+                            <div className="stat-label">Interns Mentored</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-value">100+</div>
+                            <div className="stat-label">Projects Launched</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-value">95%</div>
+                            <div className="stat-label">Employment Rate</div>
+                        </div>
+                    </div>
+                </section>
 
-                {/* About Section - Critical content, not lazy */}
+                {/* About Section - Pure HTML */}
                 <section id="about" className="about-section">
                     <div className="section-wrapper">
                         <div className="section-header">
@@ -74,23 +77,25 @@ export default function Home() {
                     </div>
                 </section>
 
-                <Suspense fallback={<LoadingFallback />}>
+                {/* Lazy loaded sections - Load after critical content */}
+                <Suspense fallback={<MinimalLoader />}>
                     <Features />
                 </Suspense>
 
-                <Suspense fallback={<LoadingFallback />}>
+                <Suspense fallback={<MinimalLoader />}>
                     <ProjectGallery />
                 </Suspense>
 
-                <Suspense fallback={<LoadingFallback />}>
+                <Suspense fallback={<MinimalLoader />}>
                     <Testimonials />
                 </Suspense>
 
-                <Suspense fallback={<LoadingFallback />}>
+                <Suspense fallback={<MinimalLoader />}>
                     <CTASection />
                 </Suspense>
-            </Content>
+            </main>
 
+            {/* Footer - Pure HTML */}
             <footer className="footer-section">
                 <div className="section-wrapper">
                     <div className="footer-links">
@@ -107,7 +112,7 @@ export default function Home() {
                             <InstagramOutlined style={{ fontSize: '18px' }} /> Instagram
                         </a>
                     </div>
-                    <Divider style={{ borderColor: 'rgba(255,255,255,0.1)' }} />
+                    <div className="footer-divider"></div>
                     <div className="footer-copyright">
                         © {new Date().getFullYear()} Sammunat LLC. All Rights Reserved.
                     </div>

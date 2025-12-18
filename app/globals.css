@@ -29,10 +29,12 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    /* Optimize font rendering */
+    text-rendering: optimizeLegibility;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--light-bg);
@@ -40,11 +42,15 @@ body {
     line-height: 1.6;
     /* Prevent layout shifts */
     overflow-x: hidden;
+    /* Optimize rendering */
+    font-display: swap;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+    /* Optimize link performance */
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Reduce layout shift */
@@ -53,6 +59,8 @@ video {
     max-width: 100%;
     height: auto;
     display: block;
+    /* Optimize image rendering */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 /* Ant Design Override Helpers */
@@ -78,5 +86,14 @@ video {
 
 /* Performance: Use containment for isolated components */
 .section-wrapper {
-    contain: layout style;
+    contain: layout style paint;
+}
+
+/* Optimize transforms for GPU acceleration */
+.hero-btn,
+.project-card,
+.testimonial-card {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }

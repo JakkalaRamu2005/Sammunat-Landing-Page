@@ -9,11 +9,15 @@ export function Providers({ children }) {
             theme={{
                 token: {
                     colorPrimary: '#0062ff',
-                    colorSuccess: '#28a745',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                    borderRadius: 8,
+                    // Performance optimizations
+                    motion: false, // Disable animations for better performance
                 },
-                // Reduce CSS-in-JS overhead
+                // Disable hashing for performance
                 hashed: false,
+                // Disable CSS variables for faster rendering
+                cssVar: false,
             }}
         >
             {children}

@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Collapse, Typography, List, theme, Row, Col } from 'antd';
+import { Collapse, Typography, List, Row, Col } from 'antd';
 import { CaretRightOutlined, CodeOutlined, UsergroupAddOutlined, GlobalOutlined, TeamOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
-const { Panel } = Collapse;
 
 const featuresData = [
     {
@@ -64,17 +63,15 @@ const featuresData = [
     },
 ];
 
+const panelStyle = {
+    marginBottom: 24,
+    background: '#ffffff',
+    borderRadius: '12px',
+    border: '1px solid rgba(0,0,0,0.05)',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+};
+
 export default function Features() {
-    const { token } = theme.useToken();
-
-    const panelStyle = {
-        marginBottom: 24,
-        background: '#ffffff',
-        borderRadius: '12px',
-        border: '1px solid rgba(0,0,0,0.05)',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
-    };
-
     return (
         <section id="features" className="features-section">
             <div className="section-wrapper">
